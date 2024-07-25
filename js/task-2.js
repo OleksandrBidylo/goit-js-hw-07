@@ -1,3 +1,15 @@
+// const style = document.createElement("style");
+// style.textContent = `
+//   .gallery {
+//     list-style: none;
+//     display: flex;
+//     flex-wrap: wrap;
+//     row-gap: 48px;
+//     column-gap: 24px;
+//   }
+// `;
+// document.head.appendChild(style);
+
 const images = [
   {
     url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
@@ -22,5 +34,22 @@ const images = [
   {
     url: "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
     alt: "Lighthouse Coast Sea",
-  }
+  },
 ];
+
+const imgList = {
+  list: document.querySelector(".gallery"),
+};
+
+function createImgList(images) {
+  return images
+    .map(
+      (img) => `<li>
+        <img src="${img.url}" alt="${img.alt}" width="360" height="300"/>
+      </li>`
+    )
+    .join("");
+}
+
+const addImgList = createImgList(images);
+imgList.list.innerHTML = addImgList;
